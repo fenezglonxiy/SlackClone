@@ -1,17 +1,20 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
 const typographyVariants = cva("", {
   variants: {
     variant: {
-      h1: "text-4xl lg:text-5xl",
-      h2: "text-3xl",
-      h3: "text-2xl",
-      h4: "text-xl",
-      body: "",
+      h1: "text-5xl",
+      h2: "text-4xl",
+      h3: "text-3xl",
+      h4: "text-2xl",
+      h5: "text-xl",
+      body1: "text-lg",
+      body2: "text-base",
+      small: "text-sm leading-none",
     },
     fontWeight: {
       thin: "font-thin",
@@ -26,7 +29,7 @@ const typographyVariants = cva("", {
     },
   },
   defaultVariants: {
-    variant: "body",
+    variant: "body1",
     fontWeight: "normal",
   },
 });
@@ -35,7 +38,11 @@ const typographyMappings = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
-  body: "p",
+  h4: "h4",
+  h5: "h5",
+  body1: "p",
+  body2: "p",
+  small: "p",
 } as const;
 
 type TypographyMappingValues =
@@ -47,13 +54,22 @@ export type TypographyProps = VariantProps<typeof typographyVariants> &
   };
 
 const Typography = React.forwardRef<HTMLParagraphElement, TypographyProps>(
-  ({ variant, fontWeight, className, as: asFromProps, ...props }, ref) => {
-    const CompFromFontSize =
+  (
+    {
+      variant = "body1",
+      fontWeight = "normal",
+      className,
+      as: asFromProps,
+      ...props
+    },
+    ref,
+  ) => {
+    const CompFromVariant =
       typographyMappings[
         variant as NonNullable<keyof typeof typographyMappings>
       ];
 
-    const Comp = asFromProps !== undefined ? asFromProps : CompFromFontSize;
+    const Comp = asFromProps !== undefined ? asFromProps : CompFromVariant;
 
     return (
       <Comp
@@ -62,7 +78,7 @@ const Typography = React.forwardRef<HTMLParagraphElement, TypographyProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 Typography.displayName = "Typography";

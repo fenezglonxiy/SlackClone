@@ -8,7 +8,7 @@ export type LinkProps = React.ComponentPropsWithoutRef<typeof NextLink>;
 
 const Link = React.forwardRef<React.ElementRef<typeof NextLink>, LinkProps>(
   ({ className, ...props }, ref) => (
-    <Button variant="link" className={className} asChild>
+    <Button variant="link" size="auto" className={className} asChild>
       <NextLink ref={ref} {...props} />
     </Button>
   ),

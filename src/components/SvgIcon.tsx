@@ -31,11 +31,11 @@ const SvgIcon: React.FC<SvgIconProps> = ({
 
   return (
     <svg id={id} width={width} height={height} viewBox={viewBox} {...props}>
-      <title id={titleId}>{title}</title>
+      {title !== undefined && <title id={titleId}>{title}</title>}
 
       {children}
 
-      <desc id={descId}>{desc}</desc>
+      {desc !== undefined && <desc id={descId}>{desc}</desc>}
     </svg>
   );
 };

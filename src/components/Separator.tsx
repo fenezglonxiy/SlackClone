@@ -3,7 +3,7 @@
 import React from "react";
 import { Separator as PrimitiveSeparator } from "@radix-ui/react-separator";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/cn";
 
 const Separator = React.forwardRef<
   React.ElementRef<typeof PrimitiveSeparator>,
@@ -17,7 +17,7 @@ const Separator = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const ContentWithChildren = (
       <div
@@ -25,7 +25,7 @@ const Separator = React.forwardRef<
           "flex items-center [&_hr]:flex-grow [&_hr]:border-[#ddd]",
           orientation === "horizontal" && "[&_div]:mx-5",
           orientation === "vertical" &&
-            "flex-col [&_hr]:border-t-0 [&_hr]:border-l-[1px] [&_div]:my-5"
+            "flex-col [&_div]:my-5 [&_hr]:border-l-[1px] [&_hr]:border-t-0",
         )}
       >
         <hr />
@@ -50,7 +50,7 @@ const Separator = React.forwardRef<
         {Content}
       </PrimitiveSeparator>
     );
-  }
+  },
 );
 Separator.displayName = PrimitiveSeparator.displayName;
 

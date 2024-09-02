@@ -2,7 +2,7 @@ import React from "react";
 import Typography, { TypographyProps } from "../Typography";
 
 const CardDescription = React.forwardRef<HTMLParagraphElement, TypographyProps>(
-  (props, ref) => <Typography ref={ref} variant="body" as="p" {...props} />
+  (props, ref) => <Typography ref={ref} variant="body1" as="p" {...props} />,
 );
 CardDescription.displayName = "CardDescription";
 
