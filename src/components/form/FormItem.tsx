@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import cn from "@/utils/cn";
 import React from "react";
 
 type FormItemContextValue = {
@@ -6,7 +6,7 @@ type FormItemContextValue = {
 };
 
 export const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
+  {} as FormItemContextValue,
 );
 
 const FormItem = React.forwardRef<

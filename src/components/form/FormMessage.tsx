@@ -1,6 +1,7 @@
 import React from "react";
 import useFormField from "./useFormField";
-import { cn } from "@/lib/utils";
+import Typography from "../Typography";
+import WarningIcon from "./WarningIcon";
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
@@ -14,14 +15,19 @@ const FormMessage = React.forwardRef<
   }
 
   return (
-    <p
-      ref={ref}
-      id={formMessageId}
-      className={cn("text-sm font-medium text-destructive", className)}
+    <Typography
+      variant="small"
+      fontWeight="medium"
+      className={error && "flex items-center text-destructive"}
+      as="div"
       {...props}
     >
-      {body}
-    </p>
+      {error && <WarningIcon className="pr-1" />}
+
+      <p ref={ref} id={formMessageId}>
+        {body}
+      </p>
+    </Typography>
   );
 });
 FormMessage.displayName = "FormMessage";
