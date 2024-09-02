@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/card";
 import React from "react";
 import SignUpForm from "./SignUpForm";
 import Separator from "@/components/Separator";
@@ -16,39 +8,41 @@ import GoogleIcon from "./GoogleIcon";
 import AppleIcon from "./AppleIcon";
 import Typography from "@/components/Typography";
 import Link from "@/components/Link";
+import {
+  AuthCard,
+  AuthCardContent,
+  AuthCardDescription,
+  AuthCardFooter,
+  AuthCardHeader,
+  AuthCardTitle,
+} from "./auth-card";
 
-const SignUpCard = () => {
+const SignUpCard = function () {
   return (
-    <Card className="max-w-[800px] border-0 text-center shadow-none">
-      <CardHeader className="pb-7 pt-0">
-        <CardTitle variant="h1" fontWeight="bold" className="mb-2">
-          First, enter your email
-        </CardTitle>
-        <CardDescription>
+    <AuthCard>
+      <AuthCardHeader>
+        <AuthCardTitle>First, enter your email</AuthCardTitle>
+        <AuthCardDescription>
           We suggest using the <strong>email address you use at work.</strong>
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="mx-auto max-w-[400px] space-y-4 px-0">
+        </AuthCardDescription>
+      </AuthCardHeader>
+      <AuthCardContent>
         <SignUpForm />
         <Separator>OR</Separator>
         <div className="space-y-4">
-          <OAuth2Button
-            providerName="Google"
-            providerIcon={<GoogleIcon />}
-            onClick={() => {}}
-          />
-          <OAuth2Button
-            providerName="Apple"
-            providerIcon={<AppleIcon />}
-            onClick={() => {}}
-          />
+          <OAuth2Button providerIcon={<GoogleIcon />} onClick={() => {}}>
+            Continue With Google
+          </OAuth2Button>
+          <OAuth2Button providerIcon={<AppleIcon />} onClick={() => {}}>
+            Continue With Apple
+          </OAuth2Button>
         </div>
-      </CardContent>
-      <CardFooter className="block">
+      </AuthCardContent>
+      <AuthCardFooter>
         <Typography variant="body2">Already using Slack?</Typography>
         <Link href="/signin">Sign in to an existing workspace</Link>
-      </CardFooter>
-    </Card>
+      </AuthCardFooter>
+    </AuthCard>
   );
 };
 
