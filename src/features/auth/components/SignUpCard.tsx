@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import SignUpForm from "./SignUpForm";
 import Separator from "@/components/Separator";
 import OAuth2Button from "./OAuth2Button";
 import GoogleIcon from "./GoogleIcon";
@@ -16,6 +15,7 @@ import {
   AuthCardHeader,
   AuthCardTitle,
 } from "./auth-card";
+import AuthEmailForm from "./AuthEmailForm";
 
 const SignUpCard = function () {
   return (
@@ -27,7 +27,7 @@ const SignUpCard = function () {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <SignUpForm />
+        <AuthEmailForm submitBtnLabel="Continue" />
         <Separator>OR</Separator>
         <div className="space-y-4">
           <OAuth2Button providerIcon={<GoogleIcon />} onClick={() => {}}>
@@ -40,7 +40,9 @@ const SignUpCard = function () {
       </AuthCardContent>
       <AuthCardFooter>
         <Typography variant="body2">Already using Slack?</Typography>
-        <Link href="/signin">Sign in to an existing workspace</Link>
+        <Link href="/signin" className="font-normal">
+          Sign in to an existing workspace
+        </Link>
       </AuthCardFooter>
     </AuthCard>
   );

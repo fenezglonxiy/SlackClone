@@ -1,7 +1,9 @@
 import React from "react";
 import Typography, { TypographyProps } from "../Typography";
 
-const CardTitle = React.forwardRef<HTMLParagraphElement, TypographyProps>(
+export type CardTitleProps = TypographyProps;
+
+const CardTitle = React.forwardRef<HTMLParagraphElement, CardTitleProps>(
   (props, ref) => (
     <Typography
       ref={ref}
@@ -10,7 +12,7 @@ const CardTitle = React.forwardRef<HTMLParagraphElement, TypographyProps>(
       as="h3"
       {...props}
     />
-  )
+  ),
 );
 CardTitle.displayName = "CardTitle";
 

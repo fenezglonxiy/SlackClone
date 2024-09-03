@@ -1,10 +1,8 @@
-"use client";
-
 import cn from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const typographyVariants = cva("", {
+const typographyVariants = cva("font-['Lato']", {
   variants: {
     variant: {
       h1: "text-5xl",
@@ -13,8 +11,9 @@ const typographyVariants = cva("", {
       h4: "text-2xl",
       h5: "text-xl",
       body1: "text-lg",
-      body2: "text-base",
-      small: "text-sm leading-none",
+      body2: "text-base text-[15px]",
+      sm: "text-sm leading-none",
+      xs: "text-[13px] leading-none",
     },
     fontWeight: {
       thin: "font-thin",
@@ -42,7 +41,8 @@ const typographyMappings = {
   h5: "h5",
   body1: "p",
   body2: "p",
-  small: "p",
+  sm: "p",
+  xs: "p",
 } as const;
 
 type TypographyMappingValues =

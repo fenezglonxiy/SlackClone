@@ -1,5 +1,3 @@
-"use client";
-
 import SvgIcon, { SvgIconProps } from "@/components/SvgIcon";
 
 const Logo: React.FC<SvgIconProps> = ({ ...props }) => {

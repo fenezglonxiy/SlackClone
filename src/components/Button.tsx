@@ -1,3 +1,5 @@
+"use client";
+
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -14,16 +16,16 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-[#5e5d6073] bg-white text-[#1d1c1d] font-bold bg-clip-padding transition-all duration-[80] ease-linear hover:bg-[#f8f8f8] hover:shadow-[0_1px_3px_#00000014]",
+          "border border-[#5e5d6073] bg-white text-[#1d1c1d] bg-clip-padding transition-all duration-[80ms] ease-linear hover:bg-[#f8f8f8] hover:shadow-[0_1px_3px_#00000014]",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-[#1264a3] underline-offset-2 hover:underline",
+        link: "text-[#1264a3] underline-offset-2 hover:underline font-semibold",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 px-3",
-        lg: "h-11 rounded-xl px-4 font-bold text-lg min-w-24",
+        lg: "h-11 rounded-xl px-4 font-semibold text-lg min-w-24",
         icon: "h-10 w-10",
         auto: "",
       },

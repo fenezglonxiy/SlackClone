@@ -2,9 +2,11 @@ import React from "react";
 import useFormField from "./useFormField";
 import cn from "@/utils/cn";
 
+export type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
+
 const FormDescription = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+  FormDescriptionProps
 >(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField();
 

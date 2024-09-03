@@ -5,18 +5,17 @@ import cn from "@/utils/cn";
 import React from "react";
 
 export type OAuth2ButtonProps = {
-  providerName: string;
   providerIcon: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-const OAuth2Button: React.FC<OAuth2ButtonProps> = ({
-  providerName,
+const OAuth2Button = function ({
   providerIcon,
   onClick,
   className,
+  children,
   ...props
-}) => {
+}: OAuth2ButtonProps) {
   return (
     <Button
       variant="outline"
@@ -31,7 +30,7 @@ const OAuth2Button: React.FC<OAuth2ButtonProps> = ({
       fullWidth
       {...props}
     >
-      Continue with {providerName}
+      {children}
     </Button>
   );
 };

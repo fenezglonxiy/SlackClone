@@ -1,21 +1,32 @@
+"use client";
+
 import Link from "@/components/Link";
 import Logo from "@/components/Logo";
+import { usePathname } from "next/navigation";
 import React from "react";
+import SignUpFloatNav from "./SignUpFloatNav";
 
 export default function AuthLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = usePathname();
+  const isSignInPage = pathname === "/signin";
+
   return (
     <React.Fragment>
-      <header className="h-[122px]">
+      <header className="relative h-32">
         <div className="flex h-full items-center justify-center">
           <Link href="/">
-            <Logo width="auto" height="26" />
+            <Logo width={undefined} height="26" />
           </Link>
         </div>
+
+        {isSignInPage && <SignUpFloatNav />}
       </header>
 
-      {children}
+      <main className="mt-[-8px]">
+        <div className="flex justify-center">{children}</div>
+      </main>
     </React.Fragment>
   );
 }

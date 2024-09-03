@@ -9,7 +9,7 @@ const AuthCardContent = function ({
 }: AuthCardContentProps) {
   return (
     <CardContent
-      className={cn("mx-auto max-w-[400px] space-y-4 px-0", className)}
+      className={cn("mx-auto max-w-[400px] space-y-6 px-0", className)}
       {...props}
     />
   );

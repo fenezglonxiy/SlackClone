@@ -1,8 +1,15 @@
 export { default as Form } from "./Form";
+export { type FormProps } from "./Form";
 export { default as FormControl } from "./FormControl";
+export { type FormControlProps } from "./FormControl";
 export { default as FormDescription } from "./FormDescription";
+export { type FormDescriptionProps } from "./FormDescription";
 export { default as FormField } from "./FormField";
+export { type FormFieldProps } from "./FormField";
 export { default as FormItem } from "./FormItem";
+export { type FormItemProps } from "./FormItem";
 export { default as FormLabel } from "./FormLabel";
+export { type FormLabelProps } from "./FormLabel";
 export { default as FormMessage } from "./FormMessage";
+export { type FormMessageProps } from "./FormMessage";
 export { default as useFormField } from "./useFormField";

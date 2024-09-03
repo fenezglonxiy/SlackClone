@@ -6,12 +6,6 @@ export const metadata: Metadata = {
   title: pageTitle("Singup"),
 };
 
-export default function Signup() {
-  return (
-    <main>
-      <div className="flex justify-center">
-        <SignUpCard />
-      </div>
-    </main>
-  );
+export default function SignUp() {
+  return <SignUpCard />;
 }

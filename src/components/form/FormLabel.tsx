@@ -4,9 +4,13 @@ import * as LabelPrimitive from "@radix-ui/react-label";
 import useFormField from "./useFormField";
 import cn from "@/utils/cn";
 
+export type FormLabelProps = React.ComponentPropsWithoutRef<
+  typeof LabelPrimitive.Root
+>;
+
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  FormLabelProps
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 

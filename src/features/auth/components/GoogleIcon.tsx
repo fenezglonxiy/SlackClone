@@ -1,9 +1,7 @@
-"use client";
-
 import SvgIcon, { SvgIconProps } from "@/components/SvgIcon";
 import React from "react";
 
-const GoogleIcon: React.FC<SvgIconProps> = ({ ...props }) => {
+const GoogleIcon = function ({ ...props }: SvgIconProps) {
   return (
     <SvgIcon width="18" height="18" {...props} viewBox="0 0 48 48">
       <g>

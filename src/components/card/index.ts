@@ -1,6 +1,12 @@
 export { default as Card } from "./Card";
+export { type CardProps } from "./Card";
 export { default as CardContent } from "./CardContent";
+export { type CardContentProps } from "./CardContent";
 export { default as CardDescription } from "./CardDescription";
+export { type CardDescriptionProps } from "./CardDescription";
 export { default as CardFooter } from "./CardFooter";
+export { type CardFooterProps } from "./CardFooter";
 export { default as CardHeader } from "./CardHeader";
+export { type CardHeaderProps } from "./CardHeader";
 export { default as CardTitle } from "./CardTitle";
+export { type CardTitleProps } from "./CardTitle";

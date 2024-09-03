@@ -1,18 +1,20 @@
-"use client";
-
 import Button from "@/components/Button";
 import {
   Form,
-  FormMessage,
   FormControl,
   FormField,
   FormItem,
+  FormMessage,
 } from "@/components/form";
 import Input from "@/components/Input";
-
 import { zodResolver } from "@hookform/resolvers/zod";
+import { HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+export type AuthEmailFormProps = {
+  submitBtnLabel?: string;
+} & HTMLAttributes<HTMLFormElement>;
 
 const formSchema = z.object({
   email: z
@@ -21,7 +23,10 @@ const formSchema = z.object({
     .email("It looks like that isn’t a valid email address."),
 });
 
-const SignUpForm = () => {
+const AuthEmailForm = function ({
+  submitBtnLabel,
+  ...props
+}: AuthEmailFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -29,12 +34,12 @@ const SignUpForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-  }
+  };
 
   return (
-    <Form {...form}>
+    <Form {...form} {...props}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2.5">
         <FormField
           control={form.control}
@@ -42,7 +47,11 @@ const SignUpForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="name@work-email.com" {...field} />
+                <Input
+                  type="email"
+                  placeholder="name@work-email.com"
+                  {...field}
+                />
               </FormControl>
 
               <FormMessage>
@@ -53,11 +62,11 @@ const SignUpForm = () => {
         />
 
         <Button type="submit" size="lg" fullWidth>
-          Continue
+          {submitBtnLabel ? submitBtnLabel : "Continue"}
         </Button>
       </form>
     </Form>
   );
 };
 
-export default SignUpForm;
+export default AuthEmailForm;
