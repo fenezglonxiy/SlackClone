@@ -5,13 +5,15 @@ export type AuthCardContentProps = CardContentProps;
 
 const AuthCardContent = function ({
   className,
+  children,
   ...props
 }: AuthCardContentProps) {
   return (
-    <CardContent
-      className={cn("mx-auto max-w-[400px] space-y-6 px-0", className)}
-      {...props}
-    />
+    <CardContent className="px-0" {...props}>
+      <div className={cn("mx-auto max-w-[400px] space-y-6", className)}>
+        {children}
+      </div>
+    </CardContent>
   );
 };
 

@@ -3,12 +3,15 @@ import cn from "@/utils/cn";
 
 export type AuthCardFooterProps = CardFooterProps;
 
-const AuthCardFooter = function ({ className, ...props }: AuthCardFooterProps) {
+const AuthCardFooter = function ({
+  className,
+  children,
+  ...props
+}: AuthCardFooterProps) {
   return (
-    <CardFooter
-      className={cn("mx-auto block max-w-[400px]", className)}
-      {...props}
-    />
+    <CardFooter className="block" {...props}>
+      <div className={cn("mx-auto max-w-[400px]", className)}>{children}</div>
+    </CardFooter>
   );
 };
 
