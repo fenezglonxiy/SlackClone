@@ -14,7 +14,7 @@ export default function AuthLayout({
 
   return (
     <React.Fragment>
-      <header className="relative h-32">
+      <header className="relative h-[122px]">
         <div className="flex h-full items-center justify-center">
           <Link href="/">
             <Logo width={undefined} height="26" />

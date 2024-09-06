@@ -1,9 +1,7 @@
-"use client";
-
 import SvgIcon, { SvgIconProps } from "@/components/SvgIcon";
 import React from "react";
 
-const AppleIcon: React.FC<SvgIconProps> = ({ ...props }) => {
+const AppleIcon = function ({ ...props }: SvgIconProps) {
   return (
     <SvgIcon width="18" height="18" {...props} viewBox="0 0 20 20">
       <path

@@ -11,7 +11,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
+        base: "",
+        contained:
           "bg-[--color-button-primary] text-primary-foreground hover:bg-[--color-button-primary] hover:opacity-[.902]",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
@@ -20,10 +21,9 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-[#1264a3] underline-offset-2 hover:underline font-semibold",
       },
       size: {
-        default: "h-10 px-4 py-2",
+        base: "h-10 px-4 py-2",
         sm: "h-9 px-3",
         lg: "h-11 rounded-xl px-4 font-semibold text-lg min-w-24",
         icon: "h-10 w-10",
@@ -34,8 +34,8 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "contained",
+      size: "base",
     },
   },
 );
@@ -54,6 +54,11 @@ export interface ButtonProps
   icon?: React.ReactNode;
 
   /**
+   * Control the `className` prop of the icon container.
+   */
+  iconContainerClassName?: string;
+
+  /**
    * Reference: https://www.radix-ui.com/primitives/docs/guides/composition
    */
   asChild?: boolean;
@@ -70,6 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon,
       asChild = false,
       children,
+      iconContainerClassName,
       ...props
     },
     ref,
@@ -83,11 +89,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon !== undefined && iconPosition === "start" && (
-          <span className="mr-3">{icon}</span>
+          <span className={iconContainerClassName}>{icon}</span>
         )}
         <Slottable>{children}</Slottable>
         {icon !== undefined && iconPosition === "end" && (
-          <span className="ml-3">{icon}</span>
+          <span className={iconContainerClassName}>{icon}</span>
         )}
       </Comp>
     );

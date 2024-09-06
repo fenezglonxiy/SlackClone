@@ -9,7 +9,7 @@ const SignUpFloatNav = function () {
       className="absolute right-10 top-1/2 -translate-y-2/4 text-right"
     >
       New to Slack?
-      <Link href="/signup" size="inherit" className="mt-1.5 block">
+      <Link href="/signup" className="mt-1.5 block">
         Create an account
       </Link>
     </Typography>

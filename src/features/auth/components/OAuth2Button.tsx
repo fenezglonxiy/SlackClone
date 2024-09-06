@@ -27,6 +27,7 @@ const OAuth2Button = function ({
         "hover:bg-white hover:shadow-[0_1px_4px_#0000004d]",
         className,
       )}
+      iconContainerClassName="mr-3"
       fullWidth
       {...props}
     >

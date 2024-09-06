@@ -1,15 +1,48 @@
 import cn from "@/utils/cn";
+import { cva, VariantProps } from "class-variance-authority";
 import { OTPInputContext } from "input-otp";
 import React from "react";
 
-export type InputOTPSlotProps = React.ComponentPropsWithoutRef<"div"> & {
-  index: number;
-};
+const inputOTPSlotVariants = cva(
+  "font-sans relative flex items-center justify-center border-y border-r border-[#1d1c1d80] transition first:rounded-l-md first:border-l last:rounded-r-md",
+  {
+    variants: {
+      size: {
+        base: "h-10 w-10 text-sm",
+        lg: "h-24 w-20 text-[length:50px] leading-[56px]",
+      },
+    },
+    defaultVariants: {
+      size: "base",
+    },
+  },
+);
+
+const inputOTPSlotCaretVariants = cva(
+  "w-[0.8px] animate-caret-blink bg-foreground duration-1000",
+  {
+    variants: {
+      caretHeight: {
+        base: "h-4",
+        lg: "h-14",
+      },
+    },
+    defaultVariants: {
+      caretHeight: "base",
+    },
+  },
+);
+
+export type InputOTPSlotProps = VariantProps<typeof inputOTPSlotVariants> &
+  VariantProps<typeof inputOTPSlotCaretVariants> &
+  React.ComponentPropsWithoutRef<"div"> & {
+    index: number;
+  };
 
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
   InputOTPSlotProps
->(({ index, className, ...props }, ref) => {
+>(({ index, className, size, caretHeight, ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
 
@@ -17,16 +50,17 @@ const InputOTPSlot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
-        isActive && "z-10 ring-2 ring-ring ring-offset-background",
+        inputOTPSlotVariants({ size }),
+        isActive &&
+          "z-10 border border-[#1264A3] shadow-[0px_0px_0px_1px_#1264A3,0px_0px_7px_#1264a34d]",
         className,
       )}
       {...props}
     >
-      {char}
+      {char?.toUpperCase()}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink h-4 w-px bg-foreground duration-1000" />
+          <div className={cn(inputOTPSlotCaretVariants({ caretHeight }))} />
         </div>
       )}
     </div>

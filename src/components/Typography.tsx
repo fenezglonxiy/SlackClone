@@ -2,7 +2,7 @@ import cn from "@/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const typographyVariants = cva("font-['Lato']", {
+const typographyVariants = cva(undefined, {
   variants: {
     variant: {
       h1: "text-5xl",
@@ -26,10 +26,14 @@ const typographyVariants = cva("font-['Lato']", {
       extrabold: "font-extrabold",
       black: "font-black",
     },
+    fontFamily: {
+      sans: "font-sans",
+    },
   },
   defaultVariants: {
     variant: "body1",
     fontWeight: "normal",
+    fontFamily: "sans",
   },
 });
 

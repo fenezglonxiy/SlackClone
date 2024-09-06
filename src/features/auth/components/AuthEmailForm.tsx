@@ -47,16 +47,10 @@ const AuthEmailForm = function ({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="name@work-email.com"
-                  {...field}
-                />
+                <Input placeholder="name@work-email.com" {...field} />
               </FormControl>
 
-              <FormMessage>
-                <span className="hidden"></span>
-              </FormMessage>
+              <FormMessage />
             </FormItem>
           )}
         />
