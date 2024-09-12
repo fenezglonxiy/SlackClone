@@ -35,7 +35,7 @@ const SignInCard = function () {
           </OAuth2Button>
         </div>
         <Separator>OR</Separator>
-        <AuthEmailForm submitBtnLabel="Sign In With Email" />
+        <AuthEmailForm submitButtonLabel="Sign In With Email" />
       </AuthCardContent>
       <AuthCardFooter className="rounded-lg bg-[#1d1c1d0d] px-5 py-3">
         <div className="flex text-left text-[#616061]">

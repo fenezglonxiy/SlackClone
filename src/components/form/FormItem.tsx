@@ -1,3 +1,4 @@
+import useId from "@/hooks/useId";
 import cn from "@/utils/cn";
 import React from "react";
 
@@ -13,7 +14,7 @@ export type FormItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   ({ className, ...props }, ref) => {
-    const id = React.useId();
+    const id = useId();
 
     return (
       <FormItemContext.Provider value={{ id }}>

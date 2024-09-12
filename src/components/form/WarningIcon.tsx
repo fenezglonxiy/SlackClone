@@ -1,9 +1,7 @@
-"use client";
-
 import React from "react";
 import SvgIcon, { SvgIconProps } from "../SvgIcon";
 
-const WarningIcon: React.FC<SvgIconProps> = (props) => {
+const WarningIcon = function (props: SvgIconProps) {
   return (
     <SvgIcon
       width="20"

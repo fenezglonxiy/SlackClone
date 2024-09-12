@@ -8,18 +8,13 @@ const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
   FormControlProps
 >(({ ...props }, ref) => {
-  const { error, formItemId, formDescriptionId, formMessageId } =
-    useFormField();
+  const { error, formItemId, formDescriptionId } = useFormField();
 
   return (
     <Slot
       ref={ref}
       id={formItemId}
-      aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
-      }
+      aria-describedby={formDescriptionId}
       aria-invalid={!!error}
       {...props}
     />

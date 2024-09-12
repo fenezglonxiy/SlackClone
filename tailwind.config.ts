@@ -59,7 +59,8 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Slack-Lato", "Lato", "sans-serif"],
+        sans: "var(--font-family-lato)",
+        icon: "var(--font-family-icon)",
       },
       keyframes: {
         "accordion-down": {

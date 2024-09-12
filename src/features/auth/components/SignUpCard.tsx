@@ -27,7 +27,7 @@ const SignUpCard = function () {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <AuthEmailForm submitBtnLabel="Continue" />
+        <AuthEmailForm submitButtonLabel="Continue" />
         <Separator>OR</Separator>
         <div className="space-y-4">
           <OAuth2Button providerIcon={<GoogleIcon />} onClick={() => {}}>
