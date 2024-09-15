@@ -1,10 +1,8 @@
-import Button from "@/components/Button";
 import {
   Form,
   FormControl,
   FormField,
   FormFieldErrorMessage,
-  FormFieldWarningMessage,
   FormItem,
   FormLabel,
 } from "@/components/form";
@@ -14,37 +12,37 @@ import { isCompanyEmail } from "company-email-validator";
 import React, { HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-export type AuthEmailFormProps = {
-  submitButtonLabel?: string;
-} & HTMLAttributes<HTMLFormElement>;
-
-const emailRegexp =
-  /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+import { AuthenticationFlow } from "../types";
+import {
+  emailInvalidErrorMessage,
+  emailNonemptyErrorMessage,
+  emailRegexp,
+  usingWorkEmailWarningPlaceholderMessage,
+} from "./constants";
+import UsingWorkEmailWarningMessage from "./UsingWorkEmailWarningMessage";
+import { Button } from "@/components/button";
 
 const emailSchema = z
   .string()
-  .min(1, "This is required — you’ll need to enter an email.")
-  .refine(
-    (arg) => emailRegexp.test(arg),
-    "It looks like that isn’t a valid email address.",
-  );
+  .min(1, emailNonemptyErrorMessage)
+  .refine((arg) => emailRegexp.test(arg), emailInvalidErrorMessage);
 
 const companyEmailSchema = z
   .string()
   .refine(
     (arg) => isCompanyEmail(arg),
-    "Using your work email (if you have one) will make it easier for coworkers to join you on Slack.",
+    usingWorkEmailWarningPlaceholderMessage,
   );
 
 const formSchema = z.object({
   email: emailSchema,
 });
 
-const AuthEmailForm = function ({
-  submitButtonLabel,
-  ...props
-}: AuthEmailFormProps) {
+export type AuthEmailFormProps = {
+  authFlow: AuthenticationFlow;
+} & HTMLAttributes<HTMLFormElement>;
+
+const AuthEmailForm = function ({ authFlow, ...props }: AuthEmailFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,6 +52,12 @@ const AuthEmailForm = function ({
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
+  };
+
+  const onWarningMessageDisabled = () => {
+    setTimeout(() => {
+      form.setFocus("email");
+    }, 100);
   };
 
   return (
@@ -80,14 +84,26 @@ const AuthEmailForm = function ({
                   />
                 </FormControl>
               </FormItem>
-              <FormFieldWarningMessage />
-              <FormFieldErrorMessage />
+              <UsingWorkEmailWarningMessage
+                className="mb-2 mt-5"
+                arrow={true}
+                onDisabled={onWarningMessageDisabled}
+              />
+              <FormFieldErrorMessage className="mt-2">
+                <span className="invisible hidden opacity-0"></span>
+              </FormFieldErrorMessage>
             </React.Fragment>
           )}
         />
 
-        <Button type="submit" size="lg" fullWidth>
-          {submitButtonLabel ? submitButtonLabel : "Continue"}
+        <Button
+          variant="contained"
+          color="contained-purple"
+          type="submit"
+          size="lg"
+          fullWidth
+        >
+          {authFlow === "signUp" ? "Continue" : "Sign In With Email"}
         </Button>
       </form>
     </Form>

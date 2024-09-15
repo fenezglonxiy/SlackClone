@@ -41,7 +41,7 @@ body,
     --font-family-lato: Slack-Lato, sans-serif;
     --font-family-icon: "Font Awesome 6 Pro", "Font Awesome 6 Sharp";
     --color-button-primary: #611f69;
-    --color-button-primary-hover: rgba(97, 31, 105, 0.902);
+    --color-button-primary-hover: #611f69e6;
   }
 
   .dark {

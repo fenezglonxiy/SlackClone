@@ -1,28 +1,26 @@
 "use client";
 
-import Button from "@/components/Button";
+import { Button } from "@/components/button";
 import cn from "@/utils/cn";
 import React from "react";
 
 export type OAuth2ButtonProps = {
   providerIcon: React.ReactNode;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-} & React.HTMLAttributes<HTMLButtonElement>;
+} & Omit<React.HTMLAttributes<HTMLButtonElement>, "color">;
 
 const OAuth2Button = function ({
   providerIcon,
-  onClick,
   className,
   children,
   ...props
 }: OAuth2ButtonProps) {
   return (
     <Button
-      variant="outline"
+      variant="outlined"
+      color="outlined-black"
       size="lg"
       icon={providerIcon}
       iconPosition="start"
-      onClick={onClick}
       className={cn(
         "hover:bg-white hover:shadow-[0_1px_4px_#0000004d]",
         className,

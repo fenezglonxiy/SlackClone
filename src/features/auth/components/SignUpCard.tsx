@@ -27,7 +27,7 @@ const SignUpCard = function () {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <AuthEmailForm submitButtonLabel="Continue" />
+        <AuthEmailForm authFlow="signUp" />
         <Separator>OR</Separator>
         <div className="space-y-4">
           <OAuth2Button providerIcon={<GoogleIcon />} onClick={() => {}}>
@@ -39,10 +39,13 @@ const SignUpCard = function () {
         </div>
       </AuthCardContent>
       <AuthCardFooter>
-        <Typography variant="body2">Already using Slack?</Typography>
-        <Link href="/signin" className="font-normal">
-          Sign in to an existing workspace
-        </Link>
+        <Typography variant="body2" as="div">
+          Already using Slack?
+          <br />
+          <Link href="/signin" className="font-normal">
+            Sign in to an existing workspace
+          </Link>
+        </Typography>
       </AuthCardFooter>
     </AuthCard>
   );

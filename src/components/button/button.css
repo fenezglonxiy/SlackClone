@@ -1,0 +1,25 @@
+.button-link-blue {
+  --button-link-color: #1264a3;
+}
+
+.button-link-grey {
+  --button-link-color: #616061;
+}
+
+.button-contained-purple {
+  --button-contained-color: hsl(var(--primary-foreground));
+  --button-contained-bg-color: #611f69;
+  --button-contained-hover-opacity: 0.902;
+}
+
+.button-contained-purple:disabled {
+  --button-contained-bg-color: #eaeaea;
+  --button-contained-color: #454447;
+}
+
+.button-outlined-black {
+  --button-outlined-border-color: #5e5d6073;
+  --button-outlined-bg-color: white;
+  --button-outlined-color: #1d1c1d;
+  --button-outlined-hover-bg-color: #f8f8f8;
+}
