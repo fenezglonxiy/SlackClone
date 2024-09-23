@@ -20,7 +20,7 @@ const FormFieldErrorMessage = React.forwardRef<
 
   return (
     <Typography
-      variant="sm"
+      variant="body2"
       fontWeight="medium"
       className={cn(error && "flex items-center text-destructive", className)}
       as="div"

@@ -67,6 +67,24 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
      * Reference: https://www.radix-ui.com/primitives/docs/guides/composition
      */
     asChild?: boolean;
+
+    /**
+     * Control the Loader component to render when loading.
+     */
+    loader?: React.ReactNode;
+
+    /**
+     * Control whether Loader component should be enabled.
+     *
+     * If no Loader component was provided, default Loader component would
+     * be used.
+     */
+    loaderEnabled?: boolean;
+
+    /**
+     * Control whether the button should be disabled when loading.
+     */
+    isLoading?: boolean;
   };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -79,15 +97,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth,
       iconPosition,
       icon,
-      asChild = false,
+      asChild: asChildFromProps = false,
       children,
       iconContainerClassName,
       disabled,
+      loader: loaderFromProps,
+      loaderEnabled,
+      isLoading,
       ...props
     },
     ref,
   ) => {
+    const isLoaderEnabled = loaderEnabled || loaderFromProps;
+    const asChild = isLoaderEnabled ? false : asChildFromProps;
     const Comp = asChild ? Slot : "button";
+    const loader = loaderFromProps ?? (
+      <i className="fa-sharp-duotone fa-solid fa-spinner-third animate-spin" />
+    );
 
     return (
       <Comp
@@ -95,15 +121,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ variant, size, color, fullWidth, className }),
         )}
         ref={ref}
-        disabled={disabled}
-        aria-disabled={disabled}
+        disabled={disabled || isLoading}
+        aria-disabled={disabled || isLoading}
         {...props}
       >
-        {icon !== undefined && iconPosition === "start" && (
+        {isLoading && loader}
+
+        {!isLoading && icon && iconPosition === "start" && (
           <span className={iconContainerClassName}>{icon}</span>
         )}
-        <Slottable>{children}</Slottable>
-        {icon !== undefined && iconPosition === "end" && (
+
+        {!isLoading && (asChild ? <Slottable>{children}</Slottable> : children)}
+
+        {!isLoading && icon && iconPosition === "end" && (
           <span className={iconContainerClassName}>{icon}</span>
         )}
       </Comp>

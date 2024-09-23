@@ -4,25 +4,27 @@ import {
   FormFieldWarningMessageProps,
   useFormField,
 } from "@/components/form";
-import { usingWorkEmailWarningPlaceholderMessage } from "./constants";
+import { usingWorkEmailAddressWarningPlaceholderMessage } from "./constants";
 import { Button } from "@/components/button";
 
-export type UsingWorkEmailWarningMessageProps = FormFieldWarningMessageProps & {
-  /**
-   * Callback to run when the `disabled` event is emitted by clicking the `Change` button.
-   */
-  onDisabled: React.MouseEventHandler<HTMLButtonElement>;
-};
+export type UsingWorkEmailAddressWarningMessageProps =
+  FormFieldWarningMessageProps & {
+    /**
+     * Callback to run when the `disabled` event is emitted by clicking the
+     * `Change` button.
+     */
+    onDisabled: React.MouseEventHandler<HTMLButtonElement>;
+  };
 
-const UsingWorkEmailWarningMessage = function ({
+const UsingWorkEmailAddressWarningMessage = function ({
   arrow,
   onDisabled,
   ...props
-}: UsingWorkEmailWarningMessageProps) {
+}: UsingWorkEmailAddressWarningMessageProps) {
   const [disabled, setDisabled] = React.useState(false);
   const { warning } = useFormField();
 
-  if (warning?.message !== usingWorkEmailWarningPlaceholderMessage) {
+  if (warning?.message !== usingWorkEmailAddressWarningPlaceholderMessage) {
     return null;
   }
 
@@ -50,4 +52,4 @@ const UsingWorkEmailWarningMessage = function ({
   );
 };
 
-export default UsingWorkEmailWarningMessage;
+export default UsingWorkEmailAddressWarningMessage;

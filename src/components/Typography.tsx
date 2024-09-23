@@ -12,8 +12,8 @@ const typographyVariants = cva(undefined, {
       h5: "text-xl",
       body1: "text-lg",
       body2: "text-base text-[15px]",
-      sm: "text-sm leading-none",
-      xs: "text-[13px] leading-none",
+      sm: "text-sm",
+      xs: "text-sm text-[13px]",
     },
     fontWeight: {
       thin: "font-thin",

@@ -12,9 +12,9 @@ import {
 } from "./auth-card";
 import GoogleIcon from "./GoogleIcon";
 import OAuth2Button from "./OAuth2Button";
-import AuthEmailForm from "./AuthEmailForm";
 import Typography from "@/components/Typography";
 import Link from "@/components/Link";
+import SignInEmailForm from "./SignInEmailForm";
 
 const SignInCard = function () {
   return (
@@ -35,7 +35,7 @@ const SignInCard = function () {
           </OAuth2Button>
         </div>
         <Separator>OR</Separator>
-        <AuthEmailForm authFlow="signIn" />
+        <SignInEmailForm />
       </AuthCardContent>
       <AuthCardFooter className="rounded-lg bg-[#1d1c1d0d] px-5 py-3">
         <div className="flex text-left text-[#616061]">

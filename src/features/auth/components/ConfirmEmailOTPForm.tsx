@@ -3,9 +3,9 @@
 import {
   Form,
   FormControl,
+  FormErrorMessage,
   FormField,
   FormItem,
-  FormMessage,
 } from "@/components/form";
 import {
   InputOTP,
@@ -31,9 +31,20 @@ const ConfirmEmailOTPForm = function () {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values.otp.toUpperCase());
-    form.reset({ otp: "" });
+  const { isDirty } = form.getFieldState("otp");
+
+  React.useEffect(() => {
+    if (isDirty) {
+      form.clearErrors("root.serverError");
+    }
+  }, [form, isDirty]);
+
+  const handleFormSubmit = (values: z.infer<typeof formSchema>) => {
+    form.setError("root.serverError", {
+      message: "That code wasn't valid. Give it another go!",
+    });
+
+    setTimeout(() => form.resetField("otp"), 500);
   };
 
   return (
@@ -48,8 +59,8 @@ const ConfirmEmailOTPForm = function () {
                 <InputOTP
                   maxLength={6}
                   pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
-                  containerClassName="justify-center max-w-[500px] mx-auto gap-0"
-                  onComplete={form.handleSubmit(onSubmit)}
+                  containerClassName="justify-center gap-0"
+                  onComplete={form.handleSubmit(handleFormSubmit)}
                   {...field}
                 >
                   {[
@@ -75,9 +86,14 @@ const ConfirmEmailOTPForm = function () {
                   ))}
                 </InputOTP>
               </FormControl>
-              <FormMessage>
-                <span className="hidden"></span>
-              </FormMessage>
+              <FormErrorMessage
+                className="!mt-5"
+                icon={
+                  <i className="fa-regular fa-triangle-exclamation fa-xl" />
+                }
+                placeholderEnabled
+                loaderEnabled
+              />
             </FormItem>
           )}
         />

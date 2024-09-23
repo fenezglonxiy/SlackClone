@@ -18,7 +18,7 @@ const OpenEmailProviderLink = function ({
     <Link
       href={providerHref}
       target="_blank"
-      color="grey"
+      color="link-grey"
       className="font-normal"
       icon={providerIcon}
       iconPosition="start"

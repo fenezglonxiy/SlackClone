@@ -14,6 +14,6 @@ export { default as FormItem } from "./FormItem";
 export { type FormItemProps } from "./FormItem";
 export { default as FormLabel } from "./FormLabel";
 export { type FormLabelProps } from "./FormLabel";
-export { default as FormMessage } from "./FormMessage";
-export { type FormMessageProps } from "./FormMessage";
+export { default as FormErrorMessage } from "./FormErrorMessage";
+export { type FormErrorMessageProps } from "./FormErrorMessage";
 export { default as useFormField } from "./useFormField";

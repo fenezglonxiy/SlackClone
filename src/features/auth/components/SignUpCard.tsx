@@ -15,7 +15,7 @@ import {
   AuthCardHeader,
   AuthCardTitle,
 } from "./auth-card";
-import AuthEmailForm from "./AuthEmailForm";
+import SignUpEmailForm from "./SignUpEmailForm";
 
 const SignUpCard = function () {
   return (
@@ -27,7 +27,7 @@ const SignUpCard = function () {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <AuthEmailForm authFlow="signUp" />
+        <SignUpEmailForm />
         <Separator>OR</Separator>
         <div className="space-y-4">
           <OAuth2Button providerIcon={<GoogleIcon />} onClick={() => {}}>

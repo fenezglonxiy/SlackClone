@@ -47,6 +47,8 @@ export type FormFieldProps<
    * mark the form field as valid.
    */
   validSchema?: ZodEffects<ZodTypeAny, output<ZodTypeAny>, input<ZodTypeAny>>;
+
+  className?: string;
 };
 
 const FormField = <
@@ -55,6 +57,7 @@ const FormField = <
 >({
   warningSchema,
   validSchema,
+  className,
   ...props
 }: FormFieldProps<TFieldValues, TName>) => {
   const id = `${useId()}-form-field`;
@@ -63,7 +66,7 @@ const FormField = <
     <FormFieldContext.Provider
       value={{ id, name: props.name, warningSchema, validSchema }}
     >
-      <div id={id}>
+      <div id={id} className={className}>
         <Controller {...props} />
       </div>
     </FormFieldContext.Provider>

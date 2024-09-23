@@ -21,12 +21,12 @@ const ConfirmEmailOTPCard = function () {
           code expires shortly, so please enter it soon.
         </AuthCardDescription>
       </AuthCardHeader>
-      <AuthCardContent className="max-w-none">
+      <AuthCardContent className="max-w-[500px] pb-3">
         <ConfirmEmailOTPForm />
       </AuthCardContent>
       <AuthCardFooter>
-        <Typography as="div" variant="body2">
-          <div className="mb-4 flex justify-center space-x-12">
+        <Typography as="div" variant="sm" className="text-[#616061]">
+          <div className="mb-5 flex justify-center space-x-12">
             <OpenGmailLink />
             <OpenOutlookLink />
           </div>
